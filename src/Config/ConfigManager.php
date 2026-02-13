@@ -16,7 +16,7 @@ class ConfigManager
         }
     }
 
-    public function createConfigFile(): void
+    public function createConfigFile(): string
     {
         $yaml = Yaml::dump(require config_path('yaml.php'), 4, 2);
         $path = getcwd() . '/tgram.yaml';
@@ -26,6 +26,8 @@ class ConfigManager
         $projectHash = md5(getcwd());
         $cacheFile = $this->cacheDir . '/' . $projectHash . '.path';
         file_put_contents($cacheFile, $path);
+
+        return $path;
     }
 
     public function getConfigFile(): mixed
