@@ -1,14 +1,15 @@
 {
-    "name": "iwwh3n/tgram",
+    "name": "iwh3n/tgram",
     "type": "project",
     "require": {
         "symfony/console": "^7.4",
-        "symfony/finder": "^7.4"
+        "symfony/finder": "^7.4",
+        "symfony/yaml": "^7.4"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Iwwh3n\\Tgram\\": "src/"
+            "Iwh3n\\Tgram\\": "src/"
         }
     },
     "authors": [
