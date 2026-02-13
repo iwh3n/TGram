@@ -1,6 +1,6 @@
 <?php
 
-namespace Iwh3n\Tgram\Config;
+namespace Iwh3n\Tgram;
 
 use Symfony\Component\Yaml\Yaml;
 

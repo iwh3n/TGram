@@ -2,7 +2,7 @@
 
 namespace Iwh3n\Tgram\Commands;
 
-use Iwh3n\Tgram\Config\ConfigManager;
+use Iwh3n\Tgram\ConfigManager;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
