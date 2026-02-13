@@ -10,7 +10,10 @@
     "autoload": {
         "psr-4": {
             "Iwh3n\\Tgram\\": "src/"
-        }
+        },
+        "files": [
+            "src/Helper.php"
+        ]
     },
     "authors": [
         {
