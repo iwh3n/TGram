@@ -1,0 +1,19 @@
+{
+    "name": "iwh3n/tgram",
+    "description": "CLI tool to run your Telegram bot locally without Webhooks",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Iwh3n\\Tgram\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "H O S S E I N",
+            "email": "4.ho3ein@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
