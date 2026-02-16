@@ -3,6 +3,13 @@
     "description": "CLI tool to run your Telegram bot locally without Webhooks",
     "type": "project",
     "license": "MIT",
+    "homepage": "https://github.com/iwh3n/tgram",
+    "keywords": [
+        "telegram",
+        "cli",
+        "bot",
+        "console"
+    ],
     "autoload": {
         "psr-4": {
             "Iwh3n\\Tgram\\": "src/"
@@ -18,5 +25,8 @@
     "require": {
         "symfony/console": "^7.4",
         "symfony/finder": "^7.4"
-    }
+    },
+    "bin": [
+        "bin/tgram"
+    ]
 }
