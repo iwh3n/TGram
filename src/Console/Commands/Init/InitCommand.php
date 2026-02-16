@@ -1,6 +1,6 @@
 <?php
 
-namespace Iwh3n\Tgram\Commands;
+namespace Iwh3n\Tgram\Console\Commands\Init;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
