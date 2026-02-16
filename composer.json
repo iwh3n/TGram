@@ -16,6 +16,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "symfony/console": "^7.4"
+        "symfony/console": "^7.4",
+        "symfony/finder": "^7.4"
     }
 }
