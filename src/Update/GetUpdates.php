@@ -1,6 +1,6 @@
 <?php
 
-namespace Iwh3n\Tgram\Event;
+namespace Iwh3n\Tgram\Update;
 
 class GetUpdates
 {
