@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console;
+namespace Iwh3n\Tgram\Console;
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\Finder\Finder;
