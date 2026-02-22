@@ -6,6 +6,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Iwh3n\Tgram\Config\ConfigManager;
 
 class InitCommand extends Command
 {
@@ -20,8 +21,23 @@ class InitCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $io->success('hello world');
-        
-        return Command::SUCCESS;
+        try {
+            $configManager = new ConfigManager();
+
+            if ($configManager->isConfigFile()) {
+                $io->writeln('<fg=red>[ERROR]</> The configuration file has already been created.');
+                return Command::FAILURE;
+            }
+
+            $path = $configManager->createConfigFile();
+
+            $io->writeln("<fg=green>[OK]</> The configuration file in <options=underscore,bold>$path</> was successfully created.");
+
+            return Command::SUCCESS;
+
+        } catch (\Exception $e) {
+            $io->error($e->getMessage());
+            return Command::FAILURE;
+        }
     }
 }
