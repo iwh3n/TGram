@@ -5,8 +5,8 @@ namespace Iwh3n\Tgram\Console\Commands\Init;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Iwh3n\Tgram\Config\ConfigManager;
+use Iwh3n\Tgram\Console\Ui\Style;
 
 class InitCommand extends Command
 {
@@ -19,7 +19,7 @@ class InitCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $io = new SymfonyStyle($input, $output);
+        $io = new Style($input, $output);
 
         try {
             $configManager = new ConfigManager();
