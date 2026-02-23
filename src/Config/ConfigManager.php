@@ -4,6 +4,9 @@ namespace Iwh3n\Tgram\Config;
 
 use Symfony\Component\Yaml\Yaml;
 use Iwh3n\Tgram\Config\DefaultConfig;
+use Symfony\Component\Config\Definition\Processor;
+use Iwh3n\Tgram\Config\Configuration;
+use function is_array;
 
 class ConfigManager
 {
@@ -31,13 +34,27 @@ class ConfigManager
         return $path;
     }
 
-    public function getConfigFile(): mixed
+    public function getConfigFile(): ?array
     {
         $path = $this->getConfigPath();
-        if ($path && file_exists($path)) {
-            return Yaml::parseFile($path);
+
+        if (!$path || !file_exists($path)) {
+            return null;
         }
-        return null;
+
+        $rawConfig = Yaml::parseFile($path);
+
+        if (!is_array($rawConfig)) {
+            throw new \RuntimeException('Invalid configuration format.');
+        }
+
+        $processor = new Processor();
+        $configuration = new Configuration();
+
+        return $processor->processConfiguration(
+            $configuration,
+            [$rawConfig]
+        );
     }
 
     public function isConfigFile(): bool
