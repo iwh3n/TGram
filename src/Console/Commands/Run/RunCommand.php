@@ -37,11 +37,6 @@ class RunCommand extends Command
                 return Command::FAILURE;
             }
 
-            if (empty($config['bot']['token']) || empty($config['bot']['entry_point'])) {
-                $io->error('Bot token or entry point is missing in configuration.');
-                return Command::FAILURE;
-            }
-
             $update = new GetUpdates($config['bot']['token']);
             $sendUpdate = new SendUpdate($io, $update);
 
