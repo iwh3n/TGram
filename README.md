@@ -25,16 +25,32 @@ Make sure you have **PHP >= 8.2** and **Composer** installed.
 
 ```bash
 composer global require iwh3n/tgram
-export PATH="$HOME/.composer/vendor/bin:$PATH" # or $HOME/.config/composer/vendor/bin
-```
+export PATH="$(composer global config bin-dir --absolute | tail -n1):$PATH"  # session-only
+````
 
-### Windows (CMD / PowerShell)
+> ⚠️ This adds TGram **only for the current terminal session**.
+> To make it permanent, add the same line to your `~/.bashrc` or `~/.zshrc`:
+>
+> ```bash
+> echo 'export PATH="$(composer global config bin-dir --absolute | tail -n1):$PATH"' >> ~/.bashrc
+> source ~/.bashrc
+> ```
+
+### Windows (PowerShell)
 
 ```powershell
 composer global require iwh3n/tgram
-# Make sure Composer global bin is in PATH, usually:
-# %USERPROFILE%\AppData\Roaming\Composer\vendor\bin
+$env:PATH = "$(composer global config bin-dir --absolute | Select-Object -Last 1);$env:PATH"  # session-only
 ```
+
+> ⚠️ This adds TGram **only for the current PowerShell session**.
+> To make it permanent, use:
+>
+> ```powershell
+> setx PATH "$($env:APPDATA)\Composer\vendor\bin;$env:PATH"
+> ```
+>
+> Then restart your PowerShell.
 
 Verify installation:
 
@@ -108,14 +124,5 @@ Telegram Server → [Long Polling] → TGram CLI → Your Local Bot
 3. You can **debug, log, and test** locally.
 
 ---
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a branch: `git checkout -b feature/new-feature`
-3. Commit changes: `git commit -m "Add new feature"`
-4. Push: `git push origin feature/new-feature`
-5. Open a Pull Request
-
 
 Made with ❤️ by H O S S E I N
