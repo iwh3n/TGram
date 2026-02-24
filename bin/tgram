@@ -1,6 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+use Iwh3n\Tgram\Console\ConsoleApplication;
+
 function includeAutoload(): bool
 {
     if (isset($GLOBALS['_composer_autoload_path']) && file_exists($GLOBALS['_composer_autoload_path'])) {
@@ -23,13 +25,15 @@ function includeAutoload(): bool
     return false;
 }
 
+if (PHP_SAPI !== 'cli') {
+    throw new Exception('This script must be run from the command line.');
+}
+
 if (!includeAutoload()) {
     fwrite(STDERR, "Error: Composer autoload.php not found.\n");
     fwrite(STDERR, "Run 'composer install' or make sure the package is installed globally.\n");
     exit(1);
 }
-
-use Iwh3n\Tgram\Console\ConsoleApplication;
 
 $app = new ConsoleApplication();
 $app->registerCommands();
