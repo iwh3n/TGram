@@ -33,10 +33,14 @@ export PATH="$(composer global config bin-dir --absolute | tail -n1):$PATH"  # s
 >
 > ```bash
 > COMPOSER_GLOBAL_BIN=$(composer global config bin-dir --absolute)
+>
 > # for bash:
 > echo "export PATH=\"\$PATH:$COMPOSER_GLOBAL_BIN\"" >> ~/.bashrc
+> source ./.bashrc
+>
 > # for zsh:
 > echo "export PATH=\"\$PATH:$COMPOSER_GLOBAL_BIN\"" >> ~/.zshrc
+> source ./.zshrc
 > ```
 
 ### Windows (PowerShell)
