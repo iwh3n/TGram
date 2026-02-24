@@ -29,7 +29,7 @@ export PATH="$(composer global config bin-dir --absolute | tail -n1):$PATH"  # s
 ```
 
 > ⚠️ This adds TGram **only for the current terminal session**.
-> To make it permanent, add the same line to your `~/.bashrc` or `~/.zshrc`:
+> To make it permanent, enter the following commands:
 >
 > ```bash
 > COMPOSER_GLOBAL_BIN=$(composer global config bin-dir --absolute)
