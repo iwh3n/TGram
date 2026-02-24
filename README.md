@@ -26,14 +26,17 @@ Make sure you have **PHP >= 8.2** and **Composer** installed.
 ```bash
 composer global require iwh3n/tgram
 export PATH="$(composer global config bin-dir --absolute | tail -n1):$PATH"  # session-only
-````
+```
 
 > ⚠️ This adds TGram **only for the current terminal session**.
 > To make it permanent, add the same line to your `~/.bashrc` or `~/.zshrc`:
 >
 > ```bash
-> echo 'export PATH="$(composer global config bin-dir --absolute | tail -n1):$PATH"' >> ~/.bashrc
-> source ~/.bashrc
+> COMPOSER_GLOBAL_BIN=$(composer global config bin-dir --absolute)
+> # for bash:
+> echo 'export PATH="$PATH:$COMPOSER_GLOBAL_BIN"' >> ~/.bashrc
+> # for zsh:
+> echo 'export PATH="$PATH:$COMPOSER_GLOBAL_BIN"' >> ~/.zshrc
 > ```
 
 ### Windows (PowerShell)
