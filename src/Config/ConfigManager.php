@@ -53,7 +53,7 @@ class ConfigManager
 
         return $processor->processConfiguration(
             $configuration,
-            [$rawConfig]
+            $rawConfig
         );
     }
 
