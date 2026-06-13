@@ -3,13 +3,15 @@
 namespace Iwh3n\Tgram\Update;
 
 use Iwh3n\Tgram\Console\Ui\Style;
+use Iwh3n\Tgram\Updat\CheckingUpdate;
 
 class SendUpdate
 {
     public function __construct
     (
         private Style $io,
-        private GetUpdates $update
+        private GetUpdates $update,
+        private CheckingUpdate $checker
     ) {
     }
 
@@ -29,6 +31,10 @@ class SendUpdate
             $update = $this->update->getUpdate();
             if (empty($update)) {
                 usleep(200_000);
+                continue;
+            }
+
+            if (!$this->checker->isAllowed($update)) {
                 continue;
             }
 
