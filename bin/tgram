@@ -1,0 +1,40 @@
+#!/usr/bin/env php
+<?php
+
+use Tgram\TGram;
+
+function includeAutoload(): bool
+{
+    if (isset($GLOBALS['_composer_autoload_path']) && file_exists($GLOBALS['_composer_autoload_path'])) {
+        require $GLOBALS['_composer_autoload_path'];
+        return true;
+    }
+
+    $paths = [
+        __DIR__ . '/../vendor/autoload.php',
+        __DIR__ . '/../../../autoload.php',
+    ];
+
+    foreach ($paths as $file) {
+        if (file_exists($file)) {
+            require $file;
+            return true;
+        }
+    }
+
+    return false;
+}
+
+if (PHP_SAPI !== 'cli') {
+    throw new Exception('This script must be run from the command line.');
+}
+
+if (!includeAutoload()) {
+    fwrite(STDERR, "Error: Composer autoload.php not found.\n");
+    fwrite(STDERR, "Run 'composer install' or make sure the package is installed globally.\n");
+    exit(1);
+}
+
+$di = require_once __DIR__ . "/../bootstrap/container.php";
+$tgram = $di->get(TGram::class);
+$tgram->load();
