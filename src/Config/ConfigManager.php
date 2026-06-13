@@ -22,7 +22,8 @@ class ConfigManager
 
     public function createConfigFile(): string
     {
-        $yaml = DefaultConfig::yaml();
+        $data = DefaultConfig::get();
+        $yaml = Yaml::dump($data, 10, 2);
         $path = getcwd() . '/tgram.yaml';
 
         file_put_contents($path, $yaml);
