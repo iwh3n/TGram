@@ -53,25 +53,30 @@ class YamlConfigurationManager
 
     public function getConfigFile(): array
     {
-        $path = $this->getConfigPath();
+        try {
 
-        if (!$path || !file_exists($path)) {
-            return [];
+            $path = $this->getConfigPath();
+
+            if (!$path || !file_exists($path)) {
+                throw new \RuntimeException('Configuration file not found.');
+            }
+
+            $rawConfig = Yaml::parseFile($path);
+
+            if (!is_array($rawConfig)) {
+                throw new \RuntimeException('Configuration file is empty or invalid.');
+            }
+
+            $processor = new Processor();
+            $configuration = new YamlConfiguration();
+
+            return $processor->processConfiguration(
+                $configuration,
+                $rawConfig
+            );
+        } catch (\Exception $e) {
+            throw new \RuntimeException('Failed to load configuration: ' . $e->getMessage(), 0, $e);
         }
-
-        $rawConfig = Yaml::parseFile($path);
-
-        if (!is_array($rawConfig)) {
-            throw new \RuntimeException('Invalid configuration format.');
-        }
-
-        $processor = new Processor();
-        $configuration = new YamlConfiguration();
-
-        return $processor->processConfiguration(
-            $configuration,
-            $rawConfig
-        );
     }
 
     public function isConfigFile(): bool
