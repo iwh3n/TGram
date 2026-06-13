@@ -2,6 +2,7 @@
 
 namespace Iwh3n\Tgram\Console\Commands\Run;
 
+use Iwh3n\Tgram\Updat\CheckingUpdate;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -38,7 +39,8 @@ class RunCommand extends Command
             }
 
             $update = new GetUpdates($config['bot']['token']);
-            $sendUpdate = new SendUpdate($io, $update);
+            $checker = new CheckingUpdate($config['allow_updates']);
+            $sendUpdate = new SendUpdate($io, $update, $checker);
 
             $io->success('Running...');
             $sendUpdate->handle($config['bot']['entry_point']);
