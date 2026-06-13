@@ -1,6 +1,6 @@
 <?php
 
-namespace Iwh3n\Tgram\Updat;
+namespace Iwh3n\Tgram\Update;
 
 class CheckingUpdate
 {

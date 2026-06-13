@@ -3,7 +3,7 @@
 namespace Iwh3n\Tgram\Update;
 
 use Iwh3n\Tgram\Console\Ui\Style;
-use Iwh3n\Tgram\Updat\CheckingUpdate;
+use Iwh3n\Tgram\Update\CheckingUpdate;
 
 class SendUpdate
 {

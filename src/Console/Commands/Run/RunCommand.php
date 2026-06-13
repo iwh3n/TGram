@@ -2,7 +2,7 @@
 
 namespace Iwh3n\Tgram\Console\Commands\Run;
 
-use Iwh3n\Tgram\Updat\CheckingUpdate;
+use Iwh3n\Tgram\Update\CheckingUpdate;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
