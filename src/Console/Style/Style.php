@@ -36,7 +36,7 @@ class Style extends SymfonyStyle
         parent::writeln("    <fg=blue>-</> $message");
     }
 
-    public function logRequest(bool $status, int $seconds, string $message): void
+    public function logRequest(bool $status, int $seconds, ?string $message = null): void
     {
         $time = date("Y/m/d H:i:s");
         $statusText = $status ? '<fg=green>SUCCESS</>' : '<fg=red>FAILURE</>';
